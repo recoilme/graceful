@@ -18,7 +18,7 @@ const (
 	ExitCodeFailedQuit
 )
 
-// Terminate signals array (default)
+// Terminate signals array (ctrl+C, kill, close terminal, quit)
 var Terminate = []os.Signal{syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP, syscall.SIGQUIT}
 
 // Unignore will ignore all signals except passed
@@ -27,7 +27,7 @@ func Unignore(quit chan os.Signal, fallback func() error, sig ...os.Signal) {
 	go func() {
 		for {
 			signal := <-quit
-			//fmt.Println(time.Now(), "signal:", signal)
+			fmt.Println(time.Now(), "signal:", signal)
 			for _, s := range sig {
 				if s == signal {
 					if fallback != nil {
