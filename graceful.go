@@ -27,7 +27,7 @@ func Unignore(quit chan os.Signal, fallback func() error, sig ...os.Signal) {
 	go func() {
 		for {
 			signal := <-quit
-			fmt.Println(time.Now(), "signal:", signal)
+			//fmt.Println(time.Now(), "signal:", signal)
 			for _, s := range sig {
 				if s == signal {
 					if fallback != nil {
