@@ -18,7 +18,9 @@ func TestInterupt(t *testing.T) {
 
 	//must be catched
 	quit <- syscall.SIGINT
-	time.Sleep(1 * time.Second)
+	time.Sleep(2 * time.Second)
+
+	fmt.Println("If you see this - library don't work")
 }
 
 func TestNil(t *testing.T) {
